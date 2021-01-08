@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.dates as mpdates
 
 def update_stock():
-    td = TDClient(apikey="0d3992e7cb304ed4a384ccc468d35dfc")
+    td = TDClient(apikey="0d3992e7cb304ed4a384ccc468d35dfc") #This should not be here.
     ts = td.time_series(symbol="AAPL",interval="1day",timezone="America/Argentina/Buenos_Aires",start_date="2020-11-02",end_date="2021-01-07",outputsize=5000).as_pandas()
     ts = ts.sort_values("datetime")#I Spend too much time sorting the DataFrame and not saving it hahaha
     print(ts)
