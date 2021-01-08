@@ -1,1 +1,3 @@
 aapl
+meli
+tsla

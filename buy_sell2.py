@@ -71,7 +71,6 @@ def get_list_stock(lista=list):
         for b in stock.items():
             stock_table.append(b)
         stock_table.insert(0,["Company: " + lista[i][0].upper(),"Result"])
-        #print(lista[i])
         stock_table = AsciiTable(stock_table)
         print(stock_table.table)
 
@@ -80,7 +79,6 @@ def stock_pref_list():
     stock_pref_listado = []
     with open("stocks.txt","r") as stock_list:
         for stock in stock_list:
-            #print(stock)
             stock_pref_listado.append(stock.split())
     return stock_pref_listado
 
@@ -101,6 +99,4 @@ def interval_options():#try to implement some get function to auto populate the 
     return r
 
 if __name__ == "__main__":
-    #stock_name = ["TSLA","AAPL","GOOGL","AMD"]
-    print(stock_pref_list())
     get_list_stock(stock_pref_list())
