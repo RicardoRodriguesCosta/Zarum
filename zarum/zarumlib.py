@@ -9,6 +9,7 @@ import mplfinance as mpf
 import pandas as pd 
 import matplotlib.dates as mpdates
 from supersecretapi import supersecretapi
+
 def update_stock(stock=str): #Gets the stock data from Twelvedata
     td = TDClient(apikey=supersecretapi()) #get your own api! :P
     ts = td.time_series(symbol=stock,
@@ -129,7 +130,7 @@ def interval_options(): #Offer rudimentary menu with time options and return tim
 
 def update_multiple_stocks(lista=list):
     for element in lista:
-        update_stock(element[0])#Think to change to list of list of strings to list of strings
+        update_stock(element[0].upper())
 
 configleng = ["Try once again\n","int","str","Stock Symbol:     ","Market Symbol:    ","Time Interval:    "]
 
