@@ -11,7 +11,7 @@ def update_stock():
                         interval="1day",
                         timezone="America/Argentina/Buenos_Aires",
                         start_date="2020-11-02",
-                        end_date="2021-01-07",
+                        end_date="2021-01-09",
                         outputsize=5000).as_pandas()
     ts = ts.sort_values("datetime")#I Spend too much time sorting the DataFrame and not saving it hahaha
     print(ts)
@@ -30,11 +30,12 @@ def to_data_index(ts):
     tss.drop('datetime',axis=1,inplace=True)
     return tss
 
-ts = pd.read_csv("AAPL.csv",parse_dates=True)
+#ts = pd.read_csv("AAPL.csv",parse_dates=True)
+ts = update_stock()
 print(ts)
 print(type(ts))
-tss = to_data_index(ts)
-print(tss)
-mpf.plot(tss,volume=True,type="candle",mav=4)
+#tss = to_data_index(ts)
+#print(tss)
+mpf.plot(ts,volume=True,type="candle",mav=4)
 #update_stock()
 
