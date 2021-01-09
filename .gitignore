@@ -2,4 +2,5 @@ supersecretapi.py
 temp.txt
 __pycache__
 zarum/data/*
+project_dashboard
 .gitignore

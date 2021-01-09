@@ -1,13 +1,13 @@
-import os
+#import os
 from tradingview_ta import TA_Handler, Interval
-import subprocess
+#import subprocess
 from terminaltables import AsciiTable
 from twelvedata import TDClient
 import pandas as pd
-import matplotlib.pyplot as plt 
-import mplfinance as mpf
+#import matplotlib.pyplot as plt 
+#import mplfinance as mpf
 import pandas as pd 
-import matplotlib.dates as mpdates
+#import matplotlib.dates as mpdates
 from supersecretapi import supersecretapi
 
 def update_stock(stock=str): #Gets the stock data from Twelvedata
@@ -64,7 +64,7 @@ def loop_simples_de_coleta(argumento,errormsg,classe): #Get input with some safe
 			except:
 				print(errormsg)
 
-def get_stock(): #Get sell/buy indicators from tradingview_ta for one stock, with user input and print the result
+def get_stock_indicators_manual(): #Get sell/buy indicators from tradingview_ta for one stock, with user input and print the result
     handler = TA_Handler()
     symbol = loop_simples_de_coleta(config[3],config[0],config[2])
     handler.set_symbol_as(symbol)
@@ -88,7 +88,7 @@ def receive_input(lista=list,valor=int): #Compares user input to values on one l
         else:
             continue
 
-def get_list_stock(lista=list): #Get sell/buy indicators for multiple stocks from a list, and print the results 
+def get_stock_indicators_list(lista=list): #Get sell/buy indicators for multiple stocks from a list, and print the results 
     handler = TA_Handler()
     for i in range(len(lista)):
         handler.set_symbol_as(lista[i][0])
@@ -106,7 +106,7 @@ def get_list_stock(lista=list): #Get sell/buy indicators for multiple stocks fro
 
 def stock_pref_list(): #Open a file with a list of stocks and return a list of stocks
     stock_pref_listado = []
-    with open("stocks_watchlist","r") as stock_list:
+    with open("data/stocks_watchlist","r") as stock_list:
         for stock in stock_list:
             stock_pref_listado.append(stock.split())
     return stock_pref_listado
@@ -132,14 +132,31 @@ def update_multiple_stocks(lista=list):
     for element in lista:
         update_stock(element[0].upper())
 
+def add_stock_watchlist():
+    while True:
+        stock = str(input("Stock Symbol:  "))
+        if stock != ":q":
+            with open("data/stocks_watchlist","a+") as stock_list:
+                stock_list.write(stock.upper()+ "\n")
+                continue
+        else:
+            break
+def read_stock_watchlist():
+    with open("data/stocks_watchlist","r") as stock_list:
+        for stock in stock_list:
+            print(stock)
+
+
 configleng = ["Try once again\n","int","str","Stock Symbol:     ","Market Symbol:    ","Time Interval:    "]
 
 if __name__ == "__main__":
    ##get_list_stock(stock_pref_list())
    # #ts = pd.read_csv("AAPL.csv",parse_dates=True)
-    ts = update_multiple_stocks(stock_pref_list())
+   #ts = update_multiple_stocks(stock_pref_list())
    #print(stock_pref_list())
    # #tss = to_data_index(ts)
    # #print(tss)
    # mpf.plot(ts,volume=True,type="candle",mav=4)
    # #update_stock()
+   add_stock_watchlist()
+   read_stock_watchlist()
