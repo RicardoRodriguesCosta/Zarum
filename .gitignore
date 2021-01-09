@@ -1,3 +1,5 @@
 supersecretapi.py
 temp.txt
 __pycache__
+zarum/data/*
+.gitignore
