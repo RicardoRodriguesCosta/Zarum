@@ -1,4 +1,3 @@
-from inspect import getmembers, isfunction
 #import os
 from tradingview_ta import TA_Handler, Interval
 #import subprocess
