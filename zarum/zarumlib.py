@@ -1,3 +1,4 @@
+from inspect import getmembers, isfunction
 #import os
 from tradingview_ta import TA_Handler, Interval
 #import subprocess
@@ -141,6 +142,7 @@ def add_stock_watchlist():
                 continue
         else:
             break
+
 def read_stock_watchlist():
     with open("data/stocks_watchlist","r") as stock_list:
         for stock in stock_list:
