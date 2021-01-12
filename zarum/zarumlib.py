@@ -151,13 +151,13 @@ def read_stock_watchlist():
 configleng = ["Try once again\n","int","str","Stock Symbol:     ","Market Symbol:    ","Time Interval:    "]
 
 if __name__ == "__main__":
-   ##get_list_stock(stock_pref_list())
-   # #ts = pd.read_csv("AAPL.csv",parse_dates=True)
-   #ts = update_multiple_stocks(stock_pref_list())
-   #print(stock_pref_list())
-   # #tss = to_data_index(ts)
-   # #print(tss)
-   # mpf.plot(ts,volume=True,type="candle",mav=4)
-   # #update_stock()
-   add_stock_watchlist()
-   read_stock_watchlist()
+   #get_list_stock(stock_pref_list())
+   #ts = pd.read_csv("AAPL.csv",parse_dates=True)
+   ts = update_multiple_stocks(stock_pref_list())
+   print(stock_pref_list())
+   #tss = to_data_index(ts)
+   #print(tss)
+   #mpf.plot(ts,volume=True,type="candle",mav=4)
+   #update_stock()
+   #add_stock_watchlist()
+   #read_stock_watchlist()
