@@ -148,7 +148,7 @@ def read_stock_watchlist():
             print(stock)
 
 
-configleng = ["Try once again\n","int","str","Stock Symbol:     ","Market Symbol:    ","Time Interval:    "]
+configleng = ["Try once again\n","int","str","bool","Stock Symbol:     ","Market Symbol:    ","Time Interval:    ","Sorry Dave, I cannot do that..."]
 
 if __name__ == "__main__":
    #get_list_stock(stock_pref_list())
