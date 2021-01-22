@@ -4,9 +4,9 @@ from tradingview_ta import TA_Handler, Interval
 from terminaltables import AsciiTable
 from twelvedata import TDClient
 import pandas as pd
-#import matplotlib.pyplot as plt 
+#import matplotlib.pyplot as plt
 #import mplfinance as mpf
-import pandas as pd 
+import pandas as pd
 #import matplotlib.dates as mpdates
 from supersecretapi import supersecretapi
 
@@ -66,12 +66,12 @@ def loop_simples_de_coleta(argumento,errormsg,classe): #Get input with some safe
 
 def get_stock_indicators_manual(): #Get sell/buy indicators from tradingview_ta for one stock, with user input and print the result
     handler = TA_Handler()
-    symbol = loop_simples_de_coleta(config[3],config[0],config[2])
+    symbol = loop_simples_de_coleta(configleng[4],configleng[0],configleng[2])
     handler.set_symbol_as(symbol)
-    exchange = loop_simples_de_coleta(config[4],config[0],config[2])
+    exchange = loop_simples_de_coleta(configleng[5],configleng[0],configleng[2])
     handler.set_exchange_as_crypto_or_stock(exchange)
     handler.set_screener_as_stock("america")
-    r ="Interval." + str(interval_options())
+    r =str(interval_options())
     handler.set_interval_as(r)
     stock = handler.get_analysis().summary
     stock_table = []
@@ -88,7 +88,7 @@ def receive_input(lista=list,valor=int): #Compares user input to values on one l
         else:
             continue
 
-def get_stock_indicators_list(lista=list): #Get sell/buy indicators for multiple stocks from a list, and print the results 
+def get_stock_indicators_list(lista=list): #Get sell/buy indicators for multiple stocks from a list, and print the results
     handler = TA_Handler()
     for i in range(len(lista)):
         handler.set_symbol_as(lista[i][0])
@@ -124,7 +124,7 @@ def interval_options(): #Offer rudimentary menu with time options and return tim
 
     table_interval = AsciiTable(interval_options)
     print(table_interval.table)
-    interval_resp = loop_simples_de_coleta(configleng[5],configleng[0],configleng[2])
+    interval_resp = loop_simples_de_coleta(configleng[6],configleng[0],configleng[1])
     r = receive_input(interval_options,interval_resp)
     return r
 
@@ -152,9 +152,10 @@ configleng = ["Try once again\n","int","str","bool","Stock Symbol:     ","Market
 
 if __name__ == "__main__":
    #get_list_stock(stock_pref_list())
+   get_stock_indicators_manual()
    #ts = pd.read_csv("AAPL.csv",parse_dates=True)
-   ts = update_multiple_stocks(stock_pref_list())
-   print(stock_pref_list())
+   #ts = update_multiple_stocks(stock_pref_list())
+   #print(stock_pref_list())
    #tss = to_data_index(ts)
    #print(tss)
    #mpf.plot(ts,volume=True,type="candle",mav=4)
