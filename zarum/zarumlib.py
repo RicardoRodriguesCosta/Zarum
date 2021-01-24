@@ -70,7 +70,7 @@ def get_stock_indicators_manual(): #Get sell/buy indicators from tradingview_ta 
     handler.set_symbol_as(symbol)
     exchange = loop_simples_de_coleta(configleng[5],configleng[0],configleng[2])
     handler.set_exchange_as_crypto_or_stock(exchange)
-    handler.set_screener_as_stock("america")
+    handler.set_screener_as_stock(loop_simples_de_coleta(configleng[8],configleng[0],configleng[2]))
     r =str(interval_options())
     handler.set_interval_as(r)
     stock = handler.get_analysis().summary
@@ -148,7 +148,7 @@ def read_stock_watchlist():
             print(stock)
 
 
-configleng = ["Try once again\n","int","str","bool","Stock Symbol:     ","Market Symbol:    ","Time Interval:    ","Sorry Dave, I cannot do that..."]
+configleng = ["Try once again\n","int","str","bool","Stock Symbol:     ","Market Symbol:    ","Time Interval:    ","Sorry Dave, I cannot do that...","Enter the Country:    "]
 
 if __name__ == "__main__":
    #get_list_stock(stock_pref_list())
